@@ -1,0 +1,42 @@
+# ── VozCheck — AI moderation bot for Flarum / XenForo ─────────────────────────
+# voz-check.9bricks.com → central-nginx → voz-check-web (React+nginx) → /api → voz-check-api (Go)
+# Both join 9bricks-cluster so: central-nginx resolves voz-check-web, the API
+# resolves community-flarum:8888, and the web nginx resolves voz-check-api:8080.
+
+services:
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    image: voz-check-api:latest
+    container_name: voz-check-api
+    restart: unless-stopped
+    environment:
+      VOZ_ADDR: ":8080"
+      VOZ_DB_PATH: "/data/vozcheck.db"
+      VOZ_JWT_SECRET: ${VOZ_JWT_SECRET}
+      VOZ_ADMIN_USER: ${VOZ_ADMIN_USER}
+      VOZ_ADMIN_PASS: ${VOZ_ADMIN_PASS}
+    volumes:
+      - voz_data:/data
+    networks:
+      - 9bricks-cluster
+
+  web:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    image: voz-check-web:latest
+    container_name: voz-check-web
+    restart: unless-stopped
+    depends_on:
+      - api
+    networks:
+      - 9bricks-cluster
+
+networks:
+  9bricks-cluster:
+    external: true
+
+volumes:
+  voz_data:

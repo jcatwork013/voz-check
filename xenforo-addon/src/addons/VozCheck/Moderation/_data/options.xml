@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<options>
+  <!--
+    VozCheck options.
+
+    Each option is attached to the `vozCheck` option group via the <relation>
+    element (group_id + display_order). The `edit_format` controls how the field
+    renders in the AdminCP option editor.
+
+    Default values are stored as a string in `default_value` (XenForo casts them
+    according to `data_type`). Booleans use "1" / "0".
+  -->
+
+  <!-- Master enable switch. When off, the listener does nothing. -->
+  <option option_id="vozCheckEnabled" edit_format="onoff" data_type="boolean" can_backup="1">
+    <default_value>0</default_value>
+    <edit_format_params></edit_format_params>
+    <sub_options></sub_options>
+    <relations>
+      <relation group_id="vozCheck" display_order="10"/>
+    </relations>
+  </option>
+
+  <!-- Backend base URL, e.g. https://voz-check.9bricks.com (no trailing slash needed). -->
+  <option option_id="vozCheckBackendUrl" edit_format="textbox" data_type="string" can_backup="1">
+    <default_value>https://voz-check.9bricks.com</default_value>
+    <edit_format_params></edit_format_params>
+    <sub_options></sub_options>
+    <relations>
+      <relation group_id="vozCheck" display_order="20"/>
+    </relations>
+  </option>
+
+  <!-- Ingest API key used for the login handshake. -->
+  <option option_id="vozCheckIngestKey" edit_format="textbox" data_type="string" can_backup="1">
+    <default_value></default_value>
+    <edit_format_params></edit_format_params>
+    <sub_options></sub_options>
+    <relations>
+      <relation group_id="vozCheck" display_order="30"/>
+    </relations>
+  </option>
+
+  <!--
+    How to hide a violating post.
+      moderated = hold for approval (default, fully reversible)
+      deleted   = soft-delete with a deletion reason (reversible)
+    Rendered as a radio group; the option/value pairs live in the phrase
+    vozCheck_option.vozCheckHideMode_* but we also inline labels here.
+  -->
+  <option option_id="vozCheckHideMode" edit_format="radio" data_type="string" can_backup="1">
+    <default_value>moderated</default_value>
+    <edit_format_params>moderated={{ phrase vozCheck_hide_mode_moderated }}
+deleted={{ phrase vozCheck_hide_mode_deleted }}</edit_format_params>
+    <sub_options></sub_options>
+    <relations>
+      <relation group_id="vozCheck" display_order="40"/>
+    </relations>
+  </option>
+
+  <!-- Skip moderation for staff (moderators/admins/staff flag). Default on. -->
+  <option option_id="vozCheckSkipStaff" edit_format="onoff" data_type="boolean" can_backup="1">
+    <default_value>1</default_value>
+    <edit_format_params></edit_format_params>
+    <sub_options></sub_options>
+    <relations>
+      <relation group_id="vozCheck" display_order="50"/>
+    </relations>
+  </option>
+
+  <!--
+    Failure policy.
+      0 (default) = fail-open: if the backend errors, let the post through.
+      1           = fail-closed: if the backend errors, hold the post for approval.
+  -->
+  <option option_id="vozCheckFailClosed" edit_format="onoff" data_type="boolean" can_backup="1">
+    <default_value>0</default_value>
+    <edit_format_params></edit_format_params>
+    <sub_options></sub_options>
+    <relations>
+      <relation group_id="vozCheck" display_order="60"/>
+    </relations>
+  </option>
+</options>

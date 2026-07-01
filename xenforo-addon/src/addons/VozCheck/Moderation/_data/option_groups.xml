@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<option_groups>
+  <option_group group_id="vozCheck" display_order="1000" debug_only="0" advanced="0">
+    <title>VozCheck AI Moderation</title>
+    <description>Settings for the VozCheck AI moderation backend integration. Configure the backend URL and ingest key, then toggle moderation on. See the add-on README for the backend contract and BETA caveats.</description>
+  </option_group>
+</option_groups>

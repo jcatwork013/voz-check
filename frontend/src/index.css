@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-slate-950 text-slate-200 font-sans;
+    /* Ambient glow: indigo top-left, cyan bottom-right, on a deep slate base. */
+    background-image:
+      radial-gradient(60rem 40rem at 12% -8%, rgba(99, 102, 241, 0.18), transparent 60%),
+      radial-gradient(50rem 38rem at 108% 112%, rgba(34, 211, 238, 0.12), transparent 60%),
+      radial-gradient(40rem 30rem at 90% -10%, rgba(139, 92, 246, 0.1), transparent 55%);
+    background-attachment: fixed;
+    min-height: 100vh;
+  }
+}
+
+@layer components {
+  /* Glass surface used by Card + any panel that wants the frosted look. */
+  .glass {
+    @apply border border-white/10 bg-white/[0.04] backdrop-blur-xl;
+  }
+
+  .input-base {
+    @apply w-full rounded-lg border border-white/10 bg-white/[0.04] px-3 py-2 text-sm text-slate-100
+      placeholder:text-slate-500 shadow-sm transition
+      focus:border-brand-400/60 focus:outline-none focus:ring-2 focus:ring-brand-500/30 focus:bg-white/[0.06]
+      disabled:cursor-not-allowed disabled:bg-white/[0.02] disabled:text-slate-500;
+  }
+  .label-base {
+    @apply block text-sm font-medium text-slate-300 mb-1.5;
+  }
+
+  /* Indigo→violet→cyan gradient text for headings / logo accents. */
+  .text-gradient {
+    @apply bg-gradient-to-r from-brand-300 via-violet-300 to-cyan-300 bg-clip-text text-transparent;
+  }
+}
+
+/* indeterminate progress bar (full-forum scan) */
+@keyframes loading {
+  0% {
+    transform: translateX(-120%);
+  }
+  100% {
+    transform: translateX(420%);
+  }
+}
+
+/* thin dark scrollbars */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  @apply bg-white/10 rounded-full;
+}
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-white/20;
+}

@@ -1,0 +1,25 @@
+{
+    "legacy_addon_id": "",
+    "title": "VozCheck AI Moderation",
+    "description": "Intercepts new threads and replies, sends their content to the VozCheck AI moderation backend, and enforces the returned verdict (hold for approval / soft-delete, alert the offending user). Fail-open by default.",
+    "version_id": 1000010,
+    "version_string": "1.0.0 BETA",
+    "dev": "9bricks",
+    "dev_url": "https://voz-check.9bricks.com",
+    "faq_url": "",
+    "support_url": "https://voz-check.9bricks.com",
+    "extra_urls": [],
+    "require": {
+        "XF": [
+            2020000,
+            "XenForo 2.2.0+"
+        ],
+        "php": [
+            "7.2.0",
+            "PHP 7.2.0+"
+        ]
+    },
+    "require_any": [],
+    "icon": "fa-shield-alt",
+    "category_id": 0
+}

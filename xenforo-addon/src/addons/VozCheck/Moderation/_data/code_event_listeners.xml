@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<code_event_listeners>
+  <listener event_id="entity_post_save"
+            execute_order="10"
+            callback_class="VozCheck\Moderation\Listener"
+            callback_method="entityPostSave"
+            active="1"
+            hint="XF\Entity\Post"
+            description="VozCheck: moderate new threads/replies after they are saved.">
+  </listener>
+</code_event_listeners>

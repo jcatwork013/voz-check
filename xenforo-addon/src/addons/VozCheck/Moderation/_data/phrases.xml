@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<phrases>
+  <!--
+    Option titles & explanations.
+
+    XenForo resolves an option's label/explain from the phrases
+    `option.<optionId>` and `option_explain.<optionId>` automatically. Define
+    them here so the AdminCP option editor shows friendly text.
+  -->
+  <phrase title="option.vozCheckEnabled" version_id="1000010" version_string="1.0.0 BETA"><![CDATA[Enable VozCheck moderation]]></phrase>
+  <phrase title="option_explain.vozCheckEnabled" version_id="1000010" version_string="1.0.0 BETA"><![CDATA[When enabled, every new thread and reply is sent to the VozCheck backend for moderation before being shown.]]></phrase>
+
+  <phrase title="option.vozCheckBackendUrl" version_id="1000010" version_string="1.0.0 BETA"><![CDATA[Backend URL]]></phrase>
+  <phrase title="option_explain.vozCheckBackendUrl" version_id="1000010" version_string="1.0.0 BETA"><![CDATA[Base URL of the VozCheck backend, e.g. https://voz-check.9bricks.com (a trailing slash is fine and will be stripped).]]></phrase>
+
+  <phrase title="option.vozCheckIngestKey" version_id="1000010" version_string="1.0.0 BETA"><![CDATA[Ingest API key]]></phrase>
+  <phrase title="option_explain.vozCheckIngestKey" version_id="1000010" version_string="1.0.0 BETA"><![CDATA[API key used for the login handshake against {backendUrl}/api/ingest/login. Treat this as a secret.]]></phrase>
+
+  <phrase title="option.vozCheckHideMode" version_id="1000010" version_string="1.0.0 BETA"><![CDATA[Hide mode for violations]]></phrase>
+  <phrase title="option_explain.vozCheckHideMode" version_id="1000010" version_string="1.0.0 BETA"><![CDATA[How to hide a violating post. "Hold for approval" (moderated) is recommended and fully reversible. "Soft-delete" marks the post as deleted with a reason; also reversible.]]></phrase>
+
+  <phrase title="option.vozCheckSkipStaff" version_id="1000010" version_string="1.0.0 BETA"><![CDATA[Skip staff]]></phrase>
+  <phrase title="option_explain.vozCheckSkipStaff" version_id="1000010" version_string="1.0.0 BETA"><![CDATA[When enabled, posts by moderators / administrators / staff are never sent for moderation. Super admins are always skipped regardless of this setting.]]></phrase>
+
+  <phrase title="option.vozCheckFailClosed" version_id="1000010" version_string="1.0.0 BETA"><![CDATA[Fail closed]]></phrase>
+  <phrase title="option_explain.vozCheckFailClosed" version_id="1000010" version_string="1.0.0 BETA"><![CDATA[Off (default) = fail open: if the backend is unreachable, posts are allowed through and the error is logged. On = fail closed: if the backend is unreachable, posts are held for approval.]]></phrase>
+
+  <!-- Radio labels for the hide mode option. -->
+  <phrase title="vozCheck_hide_mode_moderated" version_id="1000010" version_string="1.0.0 BETA"><![CDATA[Hold for approval (moderated)]]></phrase>
+  <phrase title="vozCheck_hide_mode_deleted" version_id="1000010" version_string="1.0.0 BETA"><![CDATA[Soft-delete (deleted)]]></phrase>
+
+  <!--
+    Alert phrase. XenForo renders a user alert for content type "post" and
+    action "vozCheck_moderation" using the phrase
+    `alert_<contentType>_<action>` = `alert_post_vozCheck_moderation`.
+    The {$extra.message} token is supplied from the alert's extra data
+    (set in Listener::notifyUser()).
+
+    NOTE (BETA): the exact alert phrase key + available tokens depend on your XF
+    version's alert rendering. Verify on a live instance — see README.
+  -->
+  <phrase title="alert_post_vozCheck_moderation" version_id="1000010" version_string="1.0.0 BETA"><![CDATA[Your post was reviewed by VozCheck: {$extra.message}]]></phrase>
+</phrases>
